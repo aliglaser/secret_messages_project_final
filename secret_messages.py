@@ -56,7 +56,7 @@ def cipher():
 
 	while True:
 		introduction()
-		cipher_method=input("Which cipher would you like to use? Choose the number")
+		cipher_method=input("Which cipher would you like to use? Choose the number >")
 		if cipher_method in cipher_list:
 			text = input("That's an excellent cipher. What's the message? >")
 		else:
@@ -66,6 +66,8 @@ def cipher():
 			else:
 				cipher()		
 		choice = (input("Are we going to encrypt or decrypt? > ")).lower()
+		if choice not in ['encrypt', 'decrypt']:
+			choice = input("You didnt' type it right. Choose between Encrypt/decrypt  >")
 		cm = initiating(cipher_method)
 		while True:
 			if choice.lower() == "encrypt":
@@ -74,8 +76,6 @@ def cipher():
 			elif choice.lower() == "decrypt":
 				result = cm.decrypt(text)
 				break
-			else:
-				choice = input("You didnt' type it right. Choose between Encrypt/decrypt  >")	
 		print(result)
 		tryagain=input("Encrypt/decrypt something else? Y/n  >")
 		if tryagain.lower() == "n":
